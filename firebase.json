@@ -1,0 +1,36 @@
+{
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "agrishare-app",
+          "appId": "1:463176542488:android:6e764e59ddbc9dc6d9566d",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "agrishare-app",
+          "configurations": {
+            "android": "1:463176542488:android:6e764e59ddbc9dc6d9566d",
+            "web": "1:463176542488:web:6518510bc87e20ddd9566d"
+          }
+        }
+      }
+    }
+  }
+}
