@@ -38,4 +38,101 @@ Flutter App
 4. Create Firestore database
 5. Replace `firebase_options.dart`
 6. Run:
+ 
+ Build Commands
 
+```bash
+flutter pub get
+flutter run
+
+architecture diagram
+## 🏗 Architecture Diagram
+
+```text
+┌───────────────────────────┐
+│        Flutter App        │
+│  (Android / iOS / Web)    │
+│                           │
+│  • Farmer UI              │
+│  • Owner UI               │
+│  • Admin UI               │
+└─────────────┬─────────────┘
+              │
+              ▼
+┌───────────────────────────┐
+│   Firebase Authentication │
+│  • Email / Password Login │
+│  • Role-based Access      │
+└─────────────┬─────────────┘
+              │
+              ▼
+┌───────────────────────────┐
+│   Firebase Firestore      │
+│                           │
+│  • Users Collection       │
+│  • Equipment Collection   │
+│  • Bookings Collection    │
+│  • Commission Tracking    │
+│                           │
+│  (Real-time Sync)         │
+└─────────────┬─────────────┘
+              │
+              ▼
+┌───────────────────────────┐
+│  Firebase Storage         │
+│ (Equipment Images - Opt.) │
+└───────────────────────────┘
+
+-----app flow diagram
+
+## 🔄 App Flow Diagram
+
+```text
+          ┌─────────────────┐
+          │   App Launch    │
+          └────────┬────────┘
+                   │
+                   ▼
+          ┌─────────────────┐
+          │ Login / Register│
+          └────────┬────────┘
+                   │
+                   ▼
+          ┌─────────────────┐
+          │ Role Detection  │
+          │ (Farmer/Owner/  │
+          │      Admin)     │
+          └───────┬─────────┘
+                  │
+     ┌────────────┼─────────────┐
+     │            │             │
+     ▼            ▼             ▼
+
+┌─────────────┐ ┌─────────────┐ ┌─────────────┐
+│ Farmer Flow │ │ Owner Flow  │ │ Admin Flow  │
+└─────┬───────┘ └─────┬───────┘ └─────┬───────┘
+
+Farmer:           Owner:            Admin:
+──────────        ──────────        ──────────
+Browse Equipment  Add Equipment      View Metrics
+     │                 │                 │
+Select Equipment   Manage Equipment   Total Users
+     │                 │                 │
+Book Equipment     View Bookings      Total Equipment
+     │                 │                 │
+Booking Pending    Approve / Reject   Total Bookings
+     │                 │                 │
+Approved Booking   Booking Status     Commission Stats
+     │
+View My Bookings
+
+
+
+team members
+REHMA MANAL MANKARATHODI
+SAYIFA V
+
+LINKS
+demo WORKING  link:  https://agrishare-app.web.app
+
+demo video link ; https://drive.google.com/file/d/12L_u3LuTwm0BYWDMkVm2QblEkPo_ob2g/view?usp=sharing
